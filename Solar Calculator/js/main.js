@@ -2,8 +2,8 @@
 "use strict";
 
 function adddMonths(elem) {
-var annualUseKw=0, dailyUseKw=0, i=0, x=0;
-var months=document.getElementById(elem).getElementsByTagName('input');
+let annualUseKw=0, dailyUseKw=0, i=0, x=0;
+let months=document.getElementById(elem).getElementsByTagName('input');
 
     for(i=0; i<months.length; i++) {
         x = Number(months[i].value);
@@ -15,8 +15,8 @@ var months=document.getElementById(elem).getElementsByTagName('input');
 
 
 function sunHours () {
-var hrs;
-var theZone = document.forms.solarForm.zone.selectedIndex;
+let hrs;
+let theZone = document.forms.solarForm.zone.selectedIndex;
 theZone +=1; 
     switch(theZone) {
         case 1:
@@ -44,41 +44,41 @@ theZone +=1;
 } // end function
 
 function calculatePanel(){
-    var userChoice = document.forms.solarForm.panel.selectedIndex;
-    var panelOptions = document.forms.solarForm.panel.options;
-    var power = panelOptions[userChoice].value;
-    var name = panelOptions[userChoice].text;
-    var x = [power, name];
+    let userChoice = document.forms.solarForm.panel.selectedIndex;
+    let panelOptions = document.forms.solarForm.panel.options;
+    let power = panelOptions[userChoice].value;
+    let name = panelOptions[userChoice].text;
+    let x = [power, name];
     return x;
 } //end function
 
 
 function calculateSolar() {
-    var dailyUseKw = adddMonths('mpc');
+    let dailyUseKw = adddMonths('mpc');
     // console.log(dailyUseKw);
 
-    var sunHoursPerDay = sunHours();
+    let sunHoursPerDay = sunHours();
     // console.log(sunHoursPerDay);
 
-    var minKwNeeds = dailyUseKw /sunHoursPerDay;
+    let minKwNeeds = dailyUseKw /sunHoursPerDay;
     // console.log(minKwNeeds);
 
-    var realKwNeeds = minKwNeeds * 1.25;
+    let realKwNeeds = minKwNeeds * 1.25;
     // console.log(realKwNeeds);
 
-    var realWattNeeds = realKwNeeds * 1000;
+    let realWattNeeds = realKwNeeds * 1000;
     // console.log(realWattNeeds);
 
-    var panelInfo = calculatePanel();
-    var panelOutput = panelInfo[0];
-    var panelName = panelInfo[1];
+    let panelInfo = calculatePanel();
+    let panelOutput = panelInfo[0];
+    let panelName = panelInfo[1];
     // console.log(panelOutput);
     // console.log(panelName);
 
-    var panelsNeeded = Math.ceil(realWattNeeds / panelOutput);
+    let panelsNeeded = Math.ceil(realWattNeeds / panelOutput);
     // console.log(panelsNeeded);
 
-    var feedback="";
+    let feedback="";
     feedback += "<p>Based on your average daily use of "+Math.round(dailyUseKw)+" kwh, you will need to purchase "+panelsNeeded+" "+panelName+" solar panels to offset 100% of your electricity bill.</p>";
     feedback += "<h2>Additional Details</h2>";
     feedback += "<p>Your average daily electricty consumption: "+Math.round(dailyUseKw)+" Kwh per day.</p>";
